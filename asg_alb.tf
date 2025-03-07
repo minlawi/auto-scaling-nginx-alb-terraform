@@ -16,7 +16,7 @@ resource "aws_launch_template" "nginx_lt" {
   }
 }
 
-# # # # 2. Create Auto Scaling Group
+# # # 2. Create Auto Scaling Group
 resource "aws_autoscaling_group" "nginx_asg" {
   count            = var.create_vpc ? 1 : 0
   desired_capacity = 2
