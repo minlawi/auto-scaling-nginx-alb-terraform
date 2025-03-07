@@ -44,15 +44,15 @@ resource "aws_lb_target_group" "app_tg" {
   tags = {
     name = "nginx-tg"
   }
-    health_check {
-    interval            = 30                      // ALB performs health checks every 30 seconds
-    path                = "/"                     // Health check path
-    port                = local.http_port         // Health check port
-    protocol            = local.http_protocol     // Health check protocol
-    timeout             = 5                       // Health check timeout     
-    healthy_threshold   = 2                       // Number of consecutive successful health checks required before considering the target healthy
-    unhealthy_threshold = 2                       // Number of consecutive failed health checks required before considering the target unhealthy
-    matcher             = "200"                   // HTTP code to expect in the response from the target
+  health_check {
+    interval            = 30                  // ALB performs health checks every 30 seconds
+    path                = "/"                 // Health check path
+    port                = local.http_port     // Health check port
+    protocol            = local.http_protocol // Health check protocol
+    timeout             = 5                   // Health check timeout     
+    healthy_threshold   = 2                   // Number of consecutive successful health checks required before considering the target healthy
+    unhealthy_threshold = 2                   // Number of consecutive failed health checks required before considering the target unhealthy
+    matcher             = "200"               // HTTP code to expect in the response from the target
   }
 }
 

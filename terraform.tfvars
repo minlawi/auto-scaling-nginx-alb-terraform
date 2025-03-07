@@ -1,4 +1,4 @@
+create_bastion = false
+create_vpc     = false
 profile        = "master-programmatic-admin"
-create_vpc     = true
-cidr_block     = ["192.168.0.0/16"]
-create_bastion = true
+cidr_block     = ["192.168.0.0/20"]
