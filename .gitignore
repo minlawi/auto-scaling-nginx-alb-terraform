@@ -1,6 +1,6 @@
-.terraform
-.terraform.*
-terraform.tfvars
+.terraform/
 generated/
-terraform.tfstate*
+.terraform.lock.hcl
+terraform.tfstate
 terraform.tfstate.backup
+terraform.tfvars
