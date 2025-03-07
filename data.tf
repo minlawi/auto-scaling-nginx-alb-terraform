@@ -16,3 +16,9 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 }
+
+data "aws_instances" "nginx" {
+  instance_tags = {
+    Name = "nginx-instance"
+  }
+}
