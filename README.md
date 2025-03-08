@@ -13,7 +13,6 @@
  * Bash Scripting (User data for EC2 setup)
 
 # Creating resources step-by-step
-
 # 1. Create the AWS S3 bucket
    * git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
    * cd auto-scaling-nginx-alb-terraform
@@ -23,11 +22,24 @@
    * terraform apply -auto-approve
    * cd ..
 
-# 2. Create the other resources
+# 2. Create the infrastructure resources
    * terraform init
      
    ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/47351bcabf787f02211787526b918c7e1dc29ff2/terraform%20init.png)
    
    * terraform apply -auto-approve
+
+# 3. Test Results
+  * http://alb_dns_name
+
+# Destroying resources step-by-step
+# 1. Destroy the infrastructure resources
+  * terraform destroy -auto-approve
+
+
+
+
+
+
 
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
