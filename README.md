@@ -31,7 +31,7 @@
    
    * terraform apply -auto-approve
 
-# 3. Testing Results
+# 3. How to Test
   * http://alb_dns_name
 
 # Destroying the resources step-by-step
