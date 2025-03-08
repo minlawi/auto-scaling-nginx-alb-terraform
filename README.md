@@ -15,17 +15,17 @@
 # Creating resources step-by-step
 
 # 1. Create the AWS S3 bucket
-#  1.1. git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
-#  1.2. cd auto-scaling-nginx-alb-terraform
-#  1.3. cd backend
-#  1.4. Replace your AWS profile 
-#  1.5. terraform init
-#  1.6. terraform apply -auto-approve
-#  1.7. cd ..
+   1.1. git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
+   1.2. cd auto-scaling-nginx-alb-terraform
+   1.3. cd backend
+   1.4. Replace your AWS profile 
+   1.5. terraform init
+   1.6. terraform apply -auto-approve
+   1.7. cd ..
 
 # 2. Create the other resources
-#  2.1. terraform init
+   2.1. terraform init
    ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/47351bcabf787f02211787526b918c7e1dc29ff2/terraform%20init.png)
-#  2.2. terraform apply -auto-approve
+   2.2. terraform apply -auto-approve
 
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
