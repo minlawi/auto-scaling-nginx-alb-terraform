@@ -16,7 +16,7 @@
 # 1. Create the AWS S3 bucket
    * git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
    * cd auto-scaling-nginx-alb-terraform
-   * cd s3_bucket
+   * cd s3_bucket/
    * Replace with your AWS Profile in main.tf
    * Change the bucket name in s3.tf
    * terraform init
