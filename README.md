@@ -25,7 +25,9 @@
 
 # 2. Create the other resources
    * terraform init
+     
    ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/47351bcabf787f02211787526b918c7e1dc29ff2/terraform%20init.png)
+   
    * terraform apply -auto-approve
 
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
