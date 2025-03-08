@@ -18,6 +18,7 @@
    * cd auto-scaling-nginx-alb-terraform
    * cd s3_bucket
    * Replace with your AWS Profile in main.tf
+   * Change the bucket name in s3.tf
    * terraform init
    * terraform apply -auto-approve
    * cd ..
