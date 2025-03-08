@@ -10,7 +10,7 @@ terraform {
     encrypt      = true
     key          = "backend/terraform.tfstate"
     region       = "ap-southeast-1"
-    profile      = var.profile
+    profile      = "master-programmatic-admin"
     use_lockfile = true
   }
 }
