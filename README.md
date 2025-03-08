@@ -24,6 +24,7 @@
    * cd ..
 
 # 2. Create the infrastructure resources
+   * Replace the bucket name in the backend block of the providers.tf file
    * terraform init
      
    ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/47351bcabf787f02211787526b918c7e1dc29ff2/terraform%20init.png)
@@ -43,7 +44,7 @@
   ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/ce32100b5ea3470330b1d9825713adefacba7d9e/Screenshot%20from%202025-03-08%2019-40-57.png)
 
 # 3. Destroy the S3 bucket
-  * cd backend/
+  * cd s3_bucket/
   * terraform destroy -auto-approve
 
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
