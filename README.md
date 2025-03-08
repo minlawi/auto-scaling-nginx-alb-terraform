@@ -17,7 +17,7 @@
    * git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
    * cd auto-scaling-nginx-alb-terraform
    * Replace your AWS profile in "providers.tf"
-   * cd S3_bucket
+   * cd s3_bucket
    * terraform init
    * terraform apply -auto-approve
    * cd ..
