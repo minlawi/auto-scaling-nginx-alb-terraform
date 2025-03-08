@@ -12,7 +12,7 @@
  * AWS S3 bucket to store the terraform state file.
  * Bash Scripting (User data for EC2 setup)
 
-# Creating resources step-by-step
+# Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
    * git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
    * cd auto-scaling-nginx-alb-terraform
@@ -31,10 +31,10 @@
    
    * terraform apply -auto-approve
 
-# 3. Test Results
+# 3. Testing Results
   * http://alb_dns_name
 
-# Destroying resources step-by-step
+# Destroying the resources step-by-step
 
 # 1. Destroy the infrastructure resources
   * terraform destroy -auto-approve
