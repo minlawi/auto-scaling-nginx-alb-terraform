@@ -47,4 +47,4 @@
   * cd s3_bucket/
   * terraform destroy -auto-approve
 
- # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
+ # Disclaimer: This content is for educational purposes only.
