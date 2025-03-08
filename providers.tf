@@ -11,7 +11,7 @@ terraform {
     region       = "ap-southeast-1"
     encrypt      = true
     profile      = "master-programmatic-admin"
-    use_lockfile = true
+    use_lockfile = true     // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
   }
 }
 
