@@ -5,14 +5,14 @@ terraform {
       version = "5.89.0"
     }
   }
-  # backend "s3" {
-  #   bucket       = "lawi-bucket"
-  #   key          = "terraform.tfstate"
-  #   region       = "us-east-1"
-  #   encrypt      = true
-  #   profile      = "master-programmatic-admin"
-  #   use_lockfile = true
-  # }
+  backend "s3" {
+    bucket       = "lawi-bucket"
+    key          = "terraform.tfstate"
+    region       = "ap-southeast-1"
+    encrypt      = true
+    profile      = "master-programmatic-admin"
+    use_lockfile = true
+  }
 }
 
 provider "aws" {
