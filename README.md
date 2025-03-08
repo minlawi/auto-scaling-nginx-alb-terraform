@@ -8,6 +8,7 @@
 # Technologies Used
  * Terraform for Infrastructure as Code (IaC)
  * AWS VPC, Subnets, Route Table, Internet Gateway, Public NAT Gateway, Elastic IP, Bastion (Jumphost), Auto Scaling Group, Launch Template and EC2.
+ * AWS S3 bucket to store the terraform state file.
  * Bash Scripting (User data for EC2 setup)
 
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
