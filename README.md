@@ -12,22 +12,4 @@
  * AWS S3 bucket to store the terraform state file.
  * Bash Scripting (User data for EC2 setup)
 
-# Creating resources step-by-step
-
-* 1. Go to "backend" folder > cd backend > Run "terraform init" and "terraform apply"
-* 2. cd ..
-* 3. terraform init
-
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/44e3e40e07df71ece2ee64868817e7332c26cf29/terraform%20init.png)
-
-* 4. terraform apply -auto-approve
-
-# Destroying resources step-by-step
-
-* 1. terraform destroy -auto-approve
-* 2. "Comment out" the backend block in providers.tf
-* 3. terraform init -migrate-state
-
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/f9e49ebe4f79315a47ed06c00e9321a2e443402b/Screenshot%20from%202025-03-08%2019-40-57.png)
-
  # Disclaimer: This content is for educational purposes only and should not be used in a production environment.
