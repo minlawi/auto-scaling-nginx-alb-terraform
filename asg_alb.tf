@@ -1,48 +1,48 @@
 # # # 1. Create Launch Template
-resource "aws_launch_template" "nginx_lt" {
+resource "aws_launch_template" "blue_lt" {
   count         = var.create_vpc ? 1 : 0
-  name          = "nginx-lt"
+  name          = "blue-lt"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = local.server_t2_micro
   # key_name               = var.create_bastion ? aws_key_pair.public_key[0].key_name : null
   vpc_security_group_ids = [aws_security_group.nginx_sg[0].id]
-  user_data              = filebase64("${path.root}/scripts/nginx-install.sh")
+  user_data              = filebase64("${path.root}/userdata/blue.sh")
 
   tag_specifications {
-    resource_type = "instance"
+    resource_type = "blue-instance"
     tags = {
-      Name = "nginx-instance"
+      Name = "blue-instance"
     }
   }
 }
 
 # # # 2. Create Auto Scaling Group
-resource "aws_autoscaling_group" "nginx_asg" {
+resource "aws_autoscaling_group" "blue_asg" {
   count            = var.create_vpc ? 1 : 0
   desired_capacity = 2
   max_size         = 4
   min_size         = 1
   launch_template {
-    id      = aws_launch_template.nginx_lt[0].id
+    id      = aws_launch_template.blue_lt[0].id
     version = "$Latest"
   }
   vpc_zone_identifier       = aws_subnet.private_subnet[*].id
-  target_group_arns         = [aws_lb_target_group.app_tg[0].arn]
+  target_group_arns         = [aws_lb_target_group.blue_tg[0].arn]
   health_check_type         = "ELB" // EC2 or ELB
   health_check_grace_period = 300
   force_delete              = true
 }
 
 # # # 3. Create Target Group
-resource "aws_lb_target_group" "app_tg" {
+resource "aws_lb_target_group" "blue_tg" {
   count       = var.create_vpc ? 1 : 0
-  name        = "nginx-tg"
+  name        = "blue-tg"
   port        = local.http_port
   protocol    = local.http_protocol
   vpc_id      = aws_vpc.nginx_vpc[0].id
   target_type = "instance"
   tags = {
-    name = "nginx-tg"
+    name = "blue-tg"
   }
   health_check {
     interval            = 30                  // ALB performs health checks every 30 seconds
@@ -65,10 +65,10 @@ resource "aws_lb_target_group" "app_tg" {
 # }
 
 # # # 5. Create Application Load Balancer
-resource "aws_alb" "app_lb" {
+resource "aws_alb" "blue_green_lb" {
   count                      = var.create_vpc ? 1 : 0
   load_balancer_type         = "application"
-  name                       = "nginx-alb"
+  name                       = "blue-green-alb"
   internal                   = false
   security_groups            = [aws_security_group.alb_sg[0].id]
   subnets                    = aws_subnet.public_subnet[*].id
@@ -81,12 +81,12 @@ resource "aws_alb" "app_lb" {
 # # # 6. Create Listener
 resource "aws_lb_listener" "listener" {
   count             = var.create_vpc ? 1 : 0
-  load_balancer_arn = aws_alb.app_lb[0].arn
+  load_balancer_arn = aws_alb.blue_green_lb[0].arn
   port              = local.http_port
   protocol          = local.http_protocol
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.app_tg[0].arn
+    target_group_arn = aws_lb_target_group.blue_tg[0].arn
   }
 }
