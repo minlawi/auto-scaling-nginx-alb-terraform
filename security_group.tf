@@ -59,16 +59,16 @@ resource "aws_security_group_rule" "alb_allow_all_egress_traffic" {
 
 
 # Create a security group for the web servers
-resource "aws_security_group" "nginx_sg" {
+resource "aws_security_group" "blue_green_sg" {
   count  = var.create_vpc ? 1 : 0
   vpc_id = aws_vpc.nginx_vpc[0].id
-  name   = "nginx_sg"
+  name   = "blue_green_sg"
 }
 
 # Allow HTTP ingress traffic from the ALB
-resource "aws_security_group_rule" "nginx_allow_ingress_http_from_alb" {
+resource "aws_security_group_rule" "blue_green_allow_ingress_http_from_alb" {
   count                    = var.create_vpc ? 1 : 0
-  security_group_id        = aws_security_group.nginx_sg[0].id
+  security_group_id        = aws_security_group.blue_green_sg[0].id
   type                     = "ingress"
   from_port                = local.http_port
   to_port                  = local.http_port
@@ -77,9 +77,9 @@ resource "aws_security_group_rule" "nginx_allow_ingress_http_from_alb" {
 }
 
 # Allow SSH ingress traffic from the Bastion host
-resource "aws_security_group_rule" "nginx_allow_ingress_ssh_from_bastion" {
+resource "aws_security_group_rule" "blue_green_allow_ingress_ssh_from_bastion" {
   count                    = var.create_vpc ? 1 : 0
-  security_group_id        = aws_security_group.nginx_sg[0].id
+  security_group_id        = aws_security_group.blue_green_sg[0].id
   type                     = "ingress"
   from_port                = local.ssh
   to_port                  = local.ssh
@@ -88,9 +88,9 @@ resource "aws_security_group_rule" "nginx_allow_ingress_ssh_from_bastion" {
 }
 
 # Allow ICMP ingress traffic from Bastion host
-resource "aws_security_group_rule" "nginx_allow_ingress_icmp_from_bastion" {
+resource "aws_security_group_rule" "blue_green_allow_ingress_icmp_from_bastion" {
   count                    = var.create_vpc ? 1 : 0
-  security_group_id        = aws_security_group.nginx_sg[0].id
+  security_group_id        = aws_security_group.blue_green_sg[0].id
   type                     = "ingress"
   from_port                = local.all
   to_port                  = local.all
@@ -99,9 +99,9 @@ resource "aws_security_group_rule" "nginx_allow_ingress_icmp_from_bastion" {
 }
 
 # Allow all egress traffic
-resource "aws_security_group_rule" "nginx_allow_all_egress_traffic" {
+resource "aws_security_group_rule" "blue_green_allow_all_egress_traffic" {
   count             = var.create_vpc ? 1 : 0
-  security_group_id = aws_security_group.nginx_sg[0].id
+  security_group_id = aws_security_group.blue_green_sg[0].id
   type              = "egress"
   from_port         = local.all
   to_port           = local.all
