@@ -1,5 +1,4 @@
 # 1. Create Launch Template
-
 resource "aws_launch_template" "blue_lt" {
   count         = var.create_vpc ? 1 : 0
   depends_on    = [aws_nat_gateway.nat_gw]
@@ -37,7 +36,6 @@ resource "aws_launch_template" "green_lt" {
 }
 
 # 2. Create Auto Scaling Group
-
 resource "aws_autoscaling_group" "blue_asg" {
   count            = var.create_vpc ? 1 : 0
   depends_on       = [aws_nat_gateway.nat_gw]
