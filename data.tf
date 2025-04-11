@@ -16,15 +16,3 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 }
-
-data "aws_instances" "blue_instance" {
-  instance_tags = {
-    Name = "blue-instance"
-  }
-}
-
-data "aws_instances" "green_instance" {
-  instance_tags = {
-    Name = "green-instance"
-  }
-}
