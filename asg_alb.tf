@@ -1,4 +1,5 @@
 # # # 1. Create Launch Template
+
 resource "aws_launch_template" "blue_lt" {
   count         = var.create_vpc ? 1 : 0
   name          = "blue-lt"
@@ -16,7 +17,25 @@ resource "aws_launch_template" "blue_lt" {
   }
 }
 
+resource "aws_launch_template" "green_lt" {
+  count         = var.create_vpc ? 1 : 0
+  name          = "green-lt"
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = local.server_t2_micro
+  # key_name               = var.create_bastion ? aws_key_pair.public_key[0].key_name : null
+  vpc_security_group_ids = [aws_security_group.blue_green_sg[0].id]
+  user_data              = filebase64("${path.root}/userdata/green.sh")
+
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = "green-instance"
+    }
+  }
+}
+
 # # # 2. Create Auto Scaling Group
+
 resource "aws_autoscaling_group" "blue_asg" {
   count            = var.create_vpc ? 1 : 0
   desired_capacity = 2
@@ -24,6 +43,22 @@ resource "aws_autoscaling_group" "blue_asg" {
   min_size         = 1
   launch_template {
     id      = aws_launch_template.blue_lt[0].id
+    version = "$Latest"
+  }
+  vpc_zone_identifier       = aws_subnet.private_subnet[*].id
+  target_group_arns         = [aws_lb_target_group.blue_tg[0].arn]
+  health_check_type         = "ELB" // EC2 or ELB
+  health_check_grace_period = 300
+  force_delete              = true
+}
+
+resource "aws_autoscaling_group" "green_asg" {
+  count            = var.create_vpc ? 1 : 0
+  desired_capacity = 2
+  max_size         = 4
+  min_size         = 1
+  launch_template {
+    id      = aws_launch_template.green_lt[0].id
     version = "$Latest"
   }
   vpc_zone_identifier       = aws_subnet.private_subnet[*].id
@@ -43,6 +78,28 @@ resource "aws_lb_target_group" "blue_tg" {
   target_type = "instance"
   tags = {
     name = "blue-tg"
+  }
+  health_check {
+    interval            = 30                  // ALB performs health checks every 30 seconds
+    path                = "/"                 // Health check path
+    port                = local.http_port     // Health check port
+    protocol            = local.http_protocol // Health check protocol
+    timeout             = 5                   // Health check timeout     
+    healthy_threshold   = 2                   // Number of consecutive successful health checks required before considering the target healthy
+    unhealthy_threshold = 2                   // Number of consecutive failed health checks required before considering the target unhealthy
+    matcher             = "200"               // HTTP code to expect in the response from the target
+  }
+}
+
+resource "aws_lb_target_group" "green_tg" {
+  count       = var.create_vpc ? 1 : 0
+  name        = "green-tg"
+  port        = local.http_port
+  protocol    = local.http_protocol
+  vpc_id      = aws_vpc.blue_green_vpc[0].id
+  target_type = "instance"
+  tags = {
+    name = "green-tg"
   }
   health_check {
     interval            = 30                  // ALB performs health checks every 30 seconds
@@ -86,7 +143,14 @@ resource "aws_lb_listener" "listener" {
   protocol          = local.http_protocol
 
   default_action {
+    # Target to Blue Environment
     type             = "forward"
     target_group_arn = aws_lb_target_group.blue_tg[0].arn
   }
+
+  # default_action {
+  #   # Target to Green Environment
+  #   type             = "forward"
+  #   target_group_arn = aws_lb_target_group.green_tg[0].arn
+  # }
 }
