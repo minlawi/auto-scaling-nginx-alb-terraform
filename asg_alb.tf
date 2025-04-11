@@ -147,6 +147,6 @@ resource "aws_lb_listener" "listener" {
   default_action {
     # Target to Blue Environment
     type             = "forward"
-    target_group_arn = var.active_environment == "blue" ? aws_lb_target_group.blue_tg[0].arn : aws_lb_target_group.green_tg[0].arn
+    target_group_arn = local.target_group_map[var.active_environment]
   }
 }
