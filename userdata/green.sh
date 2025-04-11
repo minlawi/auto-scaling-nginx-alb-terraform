@@ -12,13 +12,13 @@ cat <<EOF | sudo tee /var/www/html/index.html
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to nginx-server!</title>
+<title>Welcome to Green Environment!</title>
 <style>
     body {
         width: 35em;
         margin: 0 auto;
         font-family: Tahoma, Verdana, Arial, sans-serif;
-        background: blue;
+        background: green;
         color: white;
     }
 </style>
