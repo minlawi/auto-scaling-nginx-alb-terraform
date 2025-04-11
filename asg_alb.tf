@@ -39,7 +39,7 @@ resource "aws_lb_target_group" "blue_tg" {
   name        = "blue-tg"
   port        = local.http_port
   protocol    = local.http_protocol
-  vpc_id      = aws_vpc.nginx_vpc[0].id
+  vpc_id      = aws_vpc.blue_green_vpc[0].id
   target_type = "instance"
   tags = {
     name = "blue-tg"
