@@ -18,6 +18,8 @@ cat <<EOF | sudo tee /var/www/html/index.html
         width: 35em;
         margin: 0 auto;
         font-family: Tahoma, Verdana, Arial, sans-serif;
+        background: blue;
+        color: white;
     }
 </style>
 </head>
