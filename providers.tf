@@ -30,7 +30,7 @@ locals {
   server_t2_micro = "t2.micro"
   icmp_protocol   = "icmp"
   target_group_map = {
-    blue  = aws_lb_target_group.blue_tg[0].arn
-    green = aws_lb_target_group.green_tg[0].arn
+    blue  = try(aws_lb_target_group.blue_tg[0].arn, "")
+    green = try(aws_lb_target_group.green_tg[0].arn, "")
   }
 }
