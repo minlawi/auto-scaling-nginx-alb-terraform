@@ -1,4 +1,4 @@
-# # # VPC Configuration
+# VPC Configuration
 resource "aws_vpc" "blue_green_vpc" {
   count                = var.create_vpc ? 1 : 0
   cidr_block           = var.cidr_block[0]
@@ -12,7 +12,7 @@ resource "aws_vpc" "blue_green_vpc" {
   }
 }
 
-# # Subnets (Public)
+# Subnets (Public)
 resource "aws_subnet" "public_subnet" {
   count                   = var.create_vpc ? length(data.aws_availability_zones.available.names) : 0
   vpc_id                  = aws_vpc.blue_green_vpc[0].id
@@ -25,7 +25,7 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
-# # Subnets (Private)
+# Subnets (Private)
 resource "aws_subnet" "private_subnet" {
   count                   = var.create_vpc ? length(data.aws_availability_zones.available.names) : 0
   vpc_id                  = aws_vpc.blue_green_vpc[0].id
@@ -38,7 +38,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-# # Internet Gateway
+# Internet Gateway
 resource "aws_internet_gateway" "igw" {
   count  = var.create_vpc ? 1 : 0
   vpc_id = aws_vpc.blue_green_vpc[0].id
@@ -48,7 +48,7 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# # Route Table for Public Subnet
+# Route Table for Public Subnet
 resource "aws_route_table" "public_rt" {
   count  = var.create_vpc ? 1 : 0
   vpc_id = aws_vpc.blue_green_vpc[0].id
@@ -57,7 +57,7 @@ resource "aws_route_table" "public_rt" {
   }
 }
 
-# # Add default route to Public Route Table
+# Add default route to Public Route Table
 resource "aws_route" "default_route_public_rt" {
   count                  = var.create_vpc ? 1 : 0
   route_table_id         = aws_route_table.public_rt[0].id
@@ -65,14 +65,14 @@ resource "aws_route" "default_route_public_rt" {
   gateway_id             = aws_internet_gateway.igw[0].id
 }
 
-# # Associate Public Route Table with Public Subnet
+# Associate Public Route Table with Public Subnet
 resource "aws_route_table_association" "public_association" {
   count          = var.create_vpc ? length(aws_subnet.public_subnet) : 0
   subnet_id      = aws_subnet.public_subnet[count.index].id
   route_table_id = aws_route_table.public_rt[0].id
 }
 
-# # Elastic IP for NAT Gateway
+# Elastic IP for NAT Gateway
 resource "aws_eip" "nat_eip" {
   count      = var.create_vpc ? 1 : 0
   domain     = "vpc"
@@ -82,7 +82,7 @@ resource "aws_eip" "nat_eip" {
   }
 }
 
-# # NAT Gateway in Public Subnet
+# NAT Gateway in Public Subnet
 resource "aws_nat_gateway" "nat_gw" {
   count         = var.create_vpc ? 1 : 0
   allocation_id = aws_eip.nat_eip[0].id
@@ -93,7 +93,7 @@ resource "aws_nat_gateway" "nat_gw" {
   }
 }
 
-# # Create Route Table to Private Subnet
+# Create Route Table to Private Subnet
 resource "aws_route_table" "private_rt" {
   count  = var.create_vpc ? 1 : 0
   vpc_id = aws_vpc.blue_green_vpc[0].id
@@ -102,7 +102,7 @@ resource "aws_route_table" "private_rt" {
   }
 }
 
-# # Add default route to Private Route Table
+# Add default route to Private Route Table
 resource "aws_route" "default_route_private_rt" {
   count                  = var.create_vpc ? 1 : 0
   route_table_id         = aws_route_table.private_rt[0].id
@@ -110,7 +110,7 @@ resource "aws_route" "default_route_private_rt" {
   nat_gateway_id         = aws_nat_gateway.nat_gw[0].id
 }
 
-# # Associate Private Route Table with Private Subnet
+# Associate Private Route Table with Private Subnet
 resource "aws_route_table_association" "private_association" {
   count          = var.create_vpc ? length(aws_subnet.private_subnet) : 0
   subnet_id      = aws_subnet.private_subnet[count.index].id
