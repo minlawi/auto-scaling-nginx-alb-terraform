@@ -6,7 +6,9 @@ resource "aws_vpc" "blue_green_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "Blue-Green-VPC"
+    Name = "blue-green-vpc"
+    Environment = "blue-green"
+    Terraform   = "true"
   }
 }
 
@@ -72,8 +74,12 @@ resource "aws_route_table_association" "public_association" {
 
 # # Elastic IP for NAT Gateway
 resource "aws_eip" "nat_eip" {
-  count  = var.create_vpc ? 1 : 0
-  domain = "vpc"
+  count      = var.create_vpc ? 1 : 0
+  domain     = "vpc"
+  depends_on = [aws_internet_gateway.igw]
+  tags = {
+    Name = "NAT-EIP"
+  }
 }
 
 # # NAT Gateway in Public Subnet
@@ -81,6 +87,7 @@ resource "aws_nat_gateway" "nat_gw" {
   count         = var.create_vpc ? 1 : 0
   allocation_id = aws_eip.nat_eip[0].id
   subnet_id     = aws_subnet.public_subnet[0].id
+  depends_on    = [aws_internet_gateway.igw]
   tags = {
     Name = "Public-NAT-Gateway"
   }

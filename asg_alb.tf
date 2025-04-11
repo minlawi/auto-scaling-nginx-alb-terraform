@@ -1,7 +1,8 @@
-# # # 1. Create Launch Template
+# 1. Create Launch Template
 
 resource "aws_launch_template" "blue_lt" {
   count         = var.create_vpc ? 1 : 0
+  depends_on    = [aws_nat_gateway.nat_gw]
   name          = "blue-lt"
   image_id      = data.aws_ami.ubuntu.id
   instance_type = local.server_t2_micro
@@ -20,6 +21,7 @@ resource "aws_launch_template" "blue_lt" {
 resource "aws_launch_template" "green_lt" {
   count         = var.create_vpc ? 1 : 0
   name          = "green-lt"
+  depends_on    = [aws_nat_gateway.nat_gw]
   image_id      = data.aws_ami.ubuntu.id
   instance_type = local.server_t2_micro
   # key_name               = var.create_bastion ? aws_key_pair.public_key[0].key_name : null
@@ -34,10 +36,11 @@ resource "aws_launch_template" "green_lt" {
   }
 }
 
-# # # 2. Create Auto Scaling Group
+# 2. Create Auto Scaling Group
 
 resource "aws_autoscaling_group" "blue_asg" {
   count            = var.create_vpc ? 1 : 0
+  depends_on       = [aws_nat_gateway.nat_gw]
   desired_capacity = 2
   max_size         = 4
   min_size         = 1
@@ -54,6 +57,7 @@ resource "aws_autoscaling_group" "blue_asg" {
 
 resource "aws_autoscaling_group" "green_asg" {
   count            = var.create_vpc ? 1 : 0
+  depends_on       = [aws_nat_gateway.nat_gw]
   desired_capacity = 2
   max_size         = 4
   min_size         = 1
@@ -62,13 +66,13 @@ resource "aws_autoscaling_group" "green_asg" {
     version = "$Latest"
   }
   vpc_zone_identifier       = aws_subnet.private_subnet[*].id
-  target_group_arns         = [aws_lb_target_group.blue_tg[0].arn]
+  target_group_arns         = [aws_lb_target_group.green_tg[0].arn]
   health_check_type         = "ELB" // EC2 or ELB
   health_check_grace_period = 300
   force_delete              = true
 }
 
-# # # 3. Create Target Group
+# 3. Create Target Group
 resource "aws_lb_target_group" "blue_tg" {
   count       = var.create_vpc ? 1 : 0
   name        = "blue-tg"
@@ -113,7 +117,7 @@ resource "aws_lb_target_group" "green_tg" {
   }
 }
 
-# # 4. Register Targets // This is not needed as we are using ASG
+# 4. Register Targets // This is not needed as we are using ASG
 # resource "aws_lb_target_group_attachment" "tg_attachment" {
 #   count            = var.create_vpc ? length(aws_instance.nginx_instances) : 0
 #   target_group_arn = aws_lb_target_group.app_tg[0].arn
@@ -121,7 +125,7 @@ resource "aws_lb_target_group" "green_tg" {
 #   port             = local.http_port
 # }
 
-# # # 5. Create Application Load Balancer
+# 5. Create Application Load Balancer
 resource "aws_alb" "blue_green_lb" {
   count                      = var.create_vpc ? 1 : 0
   load_balancer_type         = "application"
@@ -131,11 +135,11 @@ resource "aws_alb" "blue_green_lb" {
   subnets                    = aws_subnet.public_subnet[*].id
   enable_deletion_protection = false
   tags = {
-    name = "nginx-alb"
+    name = "blue-green-alb"
   }
 }
 
-# # # 6. Create Listener
+# 6. Create Listener
 resource "aws_lb_listener" "listener" {
   count             = var.create_vpc ? 1 : 0
   load_balancer_arn = aws_alb.blue_green_lb[0].arn
@@ -145,12 +149,6 @@ resource "aws_lb_listener" "listener" {
   default_action {
     # Target to Blue Environment
     type             = "forward"
-    target_group_arn = aws_lb_target_group.blue_tg[0].arn
+    target_group_arn = var.active_environment == "blue" ? aws_lb_target_group.blue_tg[0].arn : aws_lb_target_group.green_tg[0].arn
   }
-
-  # default_action {
-  #   # Target to Green Environment
-  #   type             = "forward"
-  #   target_group_arn = aws_lb_target_group.green_tg[0].arn
-  # }
 }

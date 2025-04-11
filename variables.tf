@@ -21,3 +21,13 @@ variable "create_bastion" {
   type        = bool
   default     = false
 }
+
+variable "active_environment" {
+  description = "Choose the active environment for the load balancer. Options are 'blue' or 'green'."
+  type        = string
+  # default     = ""
+  validation {
+    condition     = contains(["blue", "green"], var.active_environment)
+    error_message = "The active_environment variable must be either 'blue' or 'green'."
+  }
+}
