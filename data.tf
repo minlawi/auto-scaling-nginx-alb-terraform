@@ -17,8 +17,14 @@ data "aws_ami" "ubuntu" {
   }
 }
 
-data "aws_instances" "nginx" {
+data "aws_instances" "blue_instance" {
   instance_tags = {
-    Name = "nginx-instance"
+    Name = "blue-instance"
+  }
+}
+
+data "aws_instances" "green_instance" {
+  instance_tags = {
+    Name = "green-instance"
   }
 }

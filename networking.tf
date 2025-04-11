@@ -6,7 +6,7 @@ resource "aws_vpc" "blue_green_vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "blue-green-vpc"
+    Name        = "blue-green-vpc"
     Environment = "blue-green"
     Terraform   = "true"
   }
