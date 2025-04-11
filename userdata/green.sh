@@ -26,4 +26,4 @@ sudo systemctl start apache2
 sudo systemctl enable apache2
 sudo systemctl restart apache2
 
-echo "Welcome to Blue Apache Server"
+echo "Welcome to Green Apache Server"
