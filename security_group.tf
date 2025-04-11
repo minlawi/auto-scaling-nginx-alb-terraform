@@ -1,7 +1,7 @@
 # Create a security group for the Bastion host
 resource "aws_security_group" "bastion_sg" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
   name   = "bastion_sg"
 }
 
@@ -31,7 +31,7 @@ resource "aws_security_group_rule" "bastion_allow_all_egress_traffic" {
 # Create a security group for the ALB
 resource "aws_security_group" "alb_sg" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
   name   = "alb_sg"
 }
 
@@ -61,7 +61,7 @@ resource "aws_security_group_rule" "alb_allow_all_egress_traffic" {
 # Create a security group for the web servers
 resource "aws_security_group" "blue_green_sg" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
   name   = "blue_green_sg"
 }
 
