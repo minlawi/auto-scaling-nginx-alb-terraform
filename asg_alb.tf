@@ -5,7 +5,7 @@ resource "aws_launch_template" "blue_lt" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = local.server_t2_micro
   # key_name               = var.create_bastion ? aws_key_pair.public_key[0].key_name : null
-  vpc_security_group_ids = [aws_security_group.nginx_sg[0].id]
+  vpc_security_group_ids = [aws_security_group.blue_green_sg[0].id]
   user_data              = filebase64("${path.root}/userdata/blue.sh")
 
   tag_specifications {

@@ -1,20 +1,20 @@
 # # # VPC Configuration
-resource "aws_vpc" "nginx_vpc" {
+resource "aws_vpc" "blue_green_vpc" {
   count                = var.create_vpc ? 1 : 0
   cidr_block           = var.cidr_block[0]
   enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = {
-    Name = "Nginx-VPC"
+    Name = "Blue-Green-VPC"
   }
 }
 
 # # Subnets (Public)
 resource "aws_subnet" "public_subnet" {
   count                   = var.create_vpc ? length(data.aws_availability_zones.available.names) : 0
-  vpc_id                  = aws_vpc.nginx_vpc[0].id
-  cidr_block              = cidrsubnet(aws_vpc.nginx_vpc[0].cidr_block, 4, count.index)
+  vpc_id                  = aws_vpc.blue_green_vpc[0].id
+  cidr_block              = cidrsubnet(aws_vpc.blue_green_vpc[0].cidr_block, 4, count.index)
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
 
@@ -27,7 +27,7 @@ resource "aws_subnet" "public_subnet" {
 resource "aws_subnet" "private_subnet" {
   count                   = var.create_vpc ? length(data.aws_availability_zones.available.names) : 0
   vpc_id                  = aws_vpc.nginx_vpc[0].id
-  cidr_block              = cidrsubnet(aws_vpc.nginx_vpc[0].cidr_block, 4, count.index + length(data.aws_availability_zones.available.names))
+  cidr_block              = cidrsubnet(aws_vpc.blue_green_vpc[0].cidr_block, 4, count.index + length(data.aws_availability_zones.available.names))
   map_public_ip_on_launch = false
   availability_zone       = data.aws_availability_zones.available.names[count.index]
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_subnet" {
 # # Internet Gateway
 resource "aws_internet_gateway" "igw" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
 
   tags = {
     Name = "IGW"
@@ -49,7 +49,7 @@ resource "aws_internet_gateway" "igw" {
 # # Route Table for Public Subnet
 resource "aws_route_table" "public_rt" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
   tags = {
     Name = "Public-Route-Table"
   }
@@ -89,7 +89,7 @@ resource "aws_nat_gateway" "nat_gw" {
 # # Create Route Table to Private Subnet
 resource "aws_route_table" "private_rt" {
   count  = var.create_vpc ? 1 : 0
-  vpc_id = aws_vpc.nginx_vpc[0].id
+  vpc_id = aws_vpc.blue_green_vpc[0].id
   tags = {
     Name = "Private-Route-Table"
   }
