@@ -9,7 +9,7 @@ resource "aws_launch_template" "blue_lt" {
   user_data              = filebase64("${path.root}/userdata/blue.sh")
 
   tag_specifications {
-    resource_type = "blue-instance"
+    resource_type = "instance"
     tags = {
       Name = "blue-instance"
     }
