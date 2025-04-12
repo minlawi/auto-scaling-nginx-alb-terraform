@@ -180,3 +180,17 @@ terrafrom apply -auto-approve</pre>
   #   use_lockfile = true // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
   # }
 }</pre>
+
+
+* **2.** Run **terraform init -force-copy**
+<pre>terraform init -force-copy</pre>
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-46-00.png)
+
+# Destroy the whole infrastructure
+<pre>terraform destroy -auto-approve</pre>
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-48-49.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2a762d6c1b5924eed073f05330385b520ecf10c9/Screenshot%20from%202025-04-12%2014-57-26.png)
+
