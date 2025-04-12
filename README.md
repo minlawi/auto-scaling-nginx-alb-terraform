@@ -101,3 +101,10 @@ create_bastion = ture </pre>
   }
 }</pre>
 
+* **5.** Once the profile name and **backend block** has been updated in the providers.tf
+file located within the **auto-scaling-nginx-alb-terraform** directory, proceed to build the infrastructure.
+
+<pre>terraform init
+terraform validate
+terraform plan
+terrafrom apply -auto-approve</pre>
