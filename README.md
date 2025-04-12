@@ -50,8 +50,8 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-# Pre-requesities before creating the resources step-by-step
-<pre>profile   = "your-profile-name"
-create_vpc     = true
-cidr_block     = ["192.168.0.0/16"]
-create_bastion = ture </pre>
+# Pre-requesities before creating the resources
+<pre>profile= "your-profile-name"
+create_vpc= true
+cidr_block= ["192.168.0.0/16"]
+create_bastion= ture </pre>
