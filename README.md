@@ -58,8 +58,10 @@ cd auto-scaling-nginx-alb-terraform/</pre>
 * **2.** Update the AWS profile in the **variables.tf** file and the bucket name in the **s3.tf** file located within the s3_bucket folder.
 
 * **3.** After updating the profile and bucket name, proceed to create the S3 bucket, which will be used to store the Terraform state file.
-<pre>cd s3_bucket/</pre>
-<pre>auto-scaling-nginx-alb-terraform/s3_bucket $ terraform init
+
+<pre>cd s3_bucket/
+
+auto-scaling-nginx-alb-terraform/s3_bucket $ terraform init
 Initializing the backend...
 Initializing provider plugins...
 - Finding hashicorp/aws versions matching "5.89.0"...
