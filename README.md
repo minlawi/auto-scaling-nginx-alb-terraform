@@ -32,8 +32,6 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-![Terraform Logo](https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg)
-
 # 🛠️ Technologies Used
 
 # Creating the resources step-by-step
