@@ -66,6 +66,12 @@ terraform apply -auto-approve</pre>
 
 # Verfication
 
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/1abbd3a32b84195d3b02691ef44301d524354c69/Screenshot%20from%202025-04-12%2012-31-23.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/1abbd3a32b84195d3b02691ef44301d524354c69/Screenshot%20from%202025-04-12%2012-34-39.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/1abbd3a32b84195d3b02691ef44301d524354c69/Screenshot%20from%202025-04-12%2012-34-01.png)
+
 * **3.** Create a **terraform.tfvars** file and add the following variables to it.
 <pre>profile        = "your-profile-name"
 create_vpc     = true
