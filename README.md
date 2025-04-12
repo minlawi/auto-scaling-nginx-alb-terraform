@@ -60,49 +60,10 @@ cd auto-scaling-nginx-alb-terraform/</pre>
 * **3.** After updating the profile and bucket name, proceed to create the S3 bucket, which will be used to store the Terraform state file.
 
 <pre>cd s3_bucket/
-
-auto-scaling-nginx-alb-terraform/s3_bucket $ terraform init
-Initializing the backend...
-Initializing provider plugins...
-- Finding hashicorp/aws versions matching "5.89.0"...
-- Installing hashicorp/aws v5.89.0...
-- Installed hashicorp/aws v5.89.0 (signed by HashiCorp)
-Terraform has created a lock file .terraform.lock.hcl to record the provider
-selections it made above. Include this file in your version control repository
-so that Terraform can guarantee to make the same selections by default when
-you run "terraform init" in the future.
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.</pre>
-
-
-
-<pre>auto-scaling-nginx-alb-terraform/s3_bucket $ terraform validate
-Success! The configuration is valid.
-
-auto-scaling-nginx-alb-terraform/s3_bucket $ terraform plan
-
-Plan: 4 to add, 0 to change, 0 to destroy.
-
-Changes to Outputs:
-  + s3_bucket_id = (known after apply)
-
-Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
-
-terraform apply -auto-approve
-
-Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
-
-Outputs:
-
-s3_bucket_id = "lawi-bucket"</pre>
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve</pre>
 
 # Verfication
 
