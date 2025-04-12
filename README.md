@@ -74,6 +74,8 @@ terraform apply -auto-approve</pre>
 
 * **3.** Create a **terraform.tfvars** file and define the required variables within it, inside the **auto-scaling-nginx-alb-terraform** directory.
 <pre>cd ..
+touch terraform.tfvars
+vi terraform.tfvars
 profile        = "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
