@@ -51,7 +51,7 @@ Let's say your online store is running on Blue, version 1.0
 * Database changes need careful handling to be backward-compatible
 
 # Pre-requesities
-* Add the following variables to terraform.tfvars file.
+* Create a **terraform.tfvars** file and add the following variables to it.
 <pre>profile        = "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
