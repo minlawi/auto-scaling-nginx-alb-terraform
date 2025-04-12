@@ -56,3 +56,6 @@ Let's say your online store is running on Blue, version 1.0
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
+
+* Create the S3 bucket
+<pre>cd s3_bucket</pre>
