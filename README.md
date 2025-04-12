@@ -15,8 +15,7 @@ Blue-Green Deployment is a software release strategy that reduces downtime and r
 * Once tested and verified, traffic is switched from Blue to Green (usually via load balancer or DNS).
 * If something goes wrong, rollback is as simple as redirecting traffic back to Blue.
 
-🏢 Real-World Example (e.g., E-commerce website)
-
+# 🏢 Real-World Example (e.g., E-commerce website)
 Let's say your online store is running on Blue, version 1.0
 * You develop version 1.1 with improved search
 * You deploy 1.1 to Green, fully test it using staging/test data.
@@ -33,20 +32,20 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-**🛠️ Technologies Used** 
+# 🛠️ Technologies Used
 
-* Terraform – Infrastructure as Code (IaC) tool to provision and manage all AWS resources declaratively. Also used for managing Blue and Green environments as separate, reproducible stacks.
-* AWS Application Load Balancer (ALB) – Internet-facing ALB used to distribute traffic across EC2 instances in both Blue and Green environments, enabling seamless traffic switching during deployments.
-* AWS Auto Scaling Group (ASG) – Automatically adjusts the number of EC2 instances in response to demand for both environments, improving availability and scalability.
-* AWS Launch Template – Used to define EC2 instance configuration (AMI, instance type, user data, etc.) for Auto Scaling in both Blue and Green environments.
-* Amazon EC2 – Virtual servers to host the web application in each environment (Blue and Green).
-* AWS VPC – Virtual network for securely launching resources with subnetting and IP address management.
-* Public and Private Subnets – Isolate instances by role (e.g., web in public, app/database in private if extended).
-* Route Tables and Internet Gateway – Enable public subnet traffic routing for external access.
-* NAT Gateway & Elastic IP – Allow private instances (if used) to access the internet securely for updates.
-* Bastion Host (Jumphost) – Secure SSH access point to EC2 instances in private subnets (if applicable).
-* Amazon S3 – Stores the Terraform state file for centralized, persistent, and version-controlled state management.
-* Bash Scripting (User Data) – Automates EC2 setup and configuration tasks such as installing web servers and application code on instance launch.
+**Terraform** - IaC tool to provision and manage AWS resources, including Blue and Green environments.
+**AWS Application Load Balancer (ALB)** - Distributes traffic across EC2 instances and enables traffic switching between environments.
+**Auto Scaling Group (ASG)** - Automatically scales EC2 instances based on demand.
+**Launch Template** - Defines EC2 instance settings for ASG deployments.
+**Amazon EC2** - Hosts the web application in both Blue and Green environments.
+**VPC** - Provides a secure, isolated network environment.
+**Public & Private Subnets** - Separate resources by access level and role.
+**Route Table & Internet Gateway** - Enable internet access for public-facing resources.
+**NAT Gateway & Elastic IP** - Allow secure internet access for private instances.
+**Bastion Host** - Provides SSH access to private EC2 instances.
+**Amazon S3** - Stores Terraform state files for centralized and versioned infrastructure management.
+**Bash Scripting (User Data)** - Automates EC2 configuration at instance startup.
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
