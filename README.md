@@ -57,6 +57,11 @@ create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
 
-* Update your profile name in the **s3_bucket** folder as well
+* Update your profile in the **s3_bucket** folder as well
+
+* Once the profile is updated in the **s3_bucket** folder, proceed to create the S3 bucket to store the Terraform state file.
 <pre>cd s3_bucket/
-</pre>
+terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve</pre>
