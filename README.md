@@ -169,7 +169,7 @@ terrafrom apply -auto-approve</pre>
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2a762d6c1b5924eed073f05330385b520ecf10c9/Screenshot%20from%202025-04-12%2014-57-26.png)
 
-# Migrating terraform.state in S3 bucket to Local
+# Migrating terraform.state in S3 bucket to Local and Delete the S3 bucket
 * **1.** Comment out **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
 <pre>terraform {
   required_providers {
@@ -193,3 +193,7 @@ terrafrom apply -auto-approve</pre>
 <pre>terraform init -force-copy</pre>
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-46-00.png)
+
+* **3.** Destroy the S3 bucket
+<pre>cd s3_bucket/
+terraform destroy -auto-approve</pre>
