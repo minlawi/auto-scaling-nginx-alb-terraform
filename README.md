@@ -51,13 +51,13 @@ Let's say your online store is running on Blue, version 1.0
 * Database changes need careful handling to be backward-compatible
 
 # Pre-requesities
-* **0.** Clone this repo to your machine
+* **1.** Clone this repo to your machine
 <pre>git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
 cd auto-scaling-nginx-alb-terraform/</pre>
 
-* **1.** Update the AWS profile in the **variables.tf** file and the bucket name in the **s3.tf** file located within the s3_bucket folder.
+* **2.** Update the AWS profile in the **variables.tf** file and the bucket name in the **s3.tf** file located within the s3_bucket folder.
 
-* **2.** After updating the profile and bucket name, proceed to create the S3 bucket, which will be used to store the Terraform state file.
+* **3.** After updating the profile and bucket name, proceed to create the S3 bucket, which will be used to store the Terraform state file.
 <pre>cd s3_bucket/
 terraform init
 terraform validate
