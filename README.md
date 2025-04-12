@@ -53,6 +53,6 @@ Let's say your online store is running on Blue, version 1.0
 # Creating the resources step-by-step
 
 <pre> profile= "your-profile-name"
-      create_vpc     = true
-      cidr_block     = ["192.168.0.0/16"]
-      create_bastion = ture </pre>
+create_vpc     = true
+cidr_block     = ["192.168.0.0/16"]
+create_bastion = ture </pre>
