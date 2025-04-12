@@ -32,7 +32,19 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-# 🛠️ Technologies Used
+### 🛠️ Technologies Used
+
+- <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="20"/> **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
+- 🖥️ **AWS EC2** – Virtual servers running the web app in Blue and Green environments.
+- 📈 **AWS Auto Scaling Group (ASG)** – Dynamically scales instances based on demand.
+- 🌐 **AWS Application Load Balancer (ALB)** – Routes traffic and enables seamless switching between Blue and Green environments.
+- 🧾 **AWS Launch Template** – Defines instance configuration for Auto Scaling Groups.
+- 🚦 **Blue-Green Deployment Strategy** – For zero-downtime deployments and instant rollback.
+- 🌍 **Nginx** – Lightweight web server installed on each EC2 instance to serve app content.
+- 🔒 **AWS Security Groups** – Control inbound/outbound traffic to EC2 and ALB.
+- 📊 **Amazon CloudWatch** *(optional)* – For monitoring metrics and scaling triggers.
+- 🧪 **Test/Staging Environment** – Used to validate Green environment before traffic switch.
+
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
