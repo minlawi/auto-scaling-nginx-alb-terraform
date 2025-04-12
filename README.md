@@ -1,6 +1,6 @@
 # System Architecture Workflow
 
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/9f95b77985297c3e9e77602c896c895d2d9c9686/private-nginx-alb-workflow.drawio.png)
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/75ede3560c273533e98bdb1de13a2c91d23cce3f/nginx-alb-terraform-Page-5.drawio(1).png)
 
 ### 📘 Project Overview
 This mini-project demonstrates the implementation of a 🚦 **Blue-Green Deployment strategy** on ☁️ **Amazon Web Services (AWS)** using 🔮 **Terraform** as the Infrastructure as Code (IaC) tool.
