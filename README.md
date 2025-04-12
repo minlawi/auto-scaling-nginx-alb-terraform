@@ -162,6 +162,13 @@ terrafrom apply -auto-approve</pre>
 ### 🗂️ Ensure terraform state file is stored in the S3 bucket
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4288b6377474823a8fc9255ca1dc2c97ebed3e9f/Screenshot%20from%202025-04-12%2014-29-30.png)
 
+# Destroy the whole infrastructure
+<pre>terraform destroy -auto-approve</pre>
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-48-49.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2a762d6c1b5924eed073f05330385b520ecf10c9/Screenshot%20from%202025-04-12%2014-57-26.png)
+
 # Migrating terraform.state in S3 bucket to Local
 * **1.** Comment out **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
 <pre>terraform {
@@ -186,11 +193,3 @@ terrafrom apply -auto-approve</pre>
 <pre>terraform init -force-copy</pre>
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-46-00.png)
-
-# Destroy the whole infrastructure
-<pre>terraform destroy -auto-approve</pre>
-
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-48-49.png)
-
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2a762d6c1b5924eed073f05330385b520ecf10c9/Screenshot%20from%202025-04-12%2014-57-26.png)
-
