@@ -57,6 +57,6 @@ create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
 
-* Create the S3 bucket
+* Update your profile name in the **s3_bucket** folder as well
 <pre>cd s3_bucket/
-pwd</pre>
+</pre>
