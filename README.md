@@ -5,23 +5,29 @@
 ### 📘 Project Overview
 This mini-project demonstrates the implementation of a 🚦 **Blue-Green Deployment strategy** on ☁️ **Amazon Web Services (AWS)** using 🔮 **Terraform** as the Infrastructure as Code (IaC) tool.
 
-The project provisions and manages the following key components:
+The project provisions and manages the following key 🛠️ components:
 
-* 🖥️ Two identical environments (Blue and Green) using Amazon EC2 instances running 🌍 Nginx web servers to simulate application behavior.
+- 🔮 **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
 
-* 🌐 An AWS Application Load Balancer (ALB) that distributes incoming traffic and enables seamless switching between environments for deployment purposes.
+- 🖥️ **AWS EC2** – Virtual servers running the web app in Blue and Green environments.
 
-* 📈 An AWS Auto Scaling Group (ASG) that dynamically scales the number of EC2 instances in each environment based on demand.
+- 📈 **AWS Auto Scaling Group (ASG)** – Dynamically scales instances based on demand.
 
-* 🧾 AWS Launch Templates to standardize instance configuration such as AMI, instance type, and user data.
+- 🌐 **AWS Application Load Balancer (ALB)** – Routes traffic and enables seamless switching between Blue and Green environments.
 
-* 🗂️ Amazon S3 for storing static assets, logs, or configuration files related to the web application.
+- 🧾 **AWS Launch Template** – Defines instance configuration for Auto Scaling Groups.
 
-* 🔒 AWS Security Groups to manage network access for both EC2 instances and the ALB.
+- 🚦 **Blue-Green Deployment Strategy** – For zero-downtime deployments and instant rollback.
 
-* 📊 Optionally, Amazon CloudWatch is used to monitor system metrics and trigger scaling events.
+- 🌍 **Nginx** – Lightweight web server installed on eac🛠️h EC2 instance to serve app content.
 
-* 🧪 A Test/Staging environment is utilized to validate the Green deployment before directing live traffic.
+- 🗂️ **Amazon S3** – Object storage for static assets, configuration files, or logs related to the web application.
+
+- 🔒 **AWS Security Groups** – Control inbound/outbound traffic to EC2 and ALB.
+
+- 📊 **Amazon CloudWatch** *(optional)* – For monitoring metrics and scaling triggers.
+
+- 🧪 **Test/Staging Environment** – Used to validate Green environment before traffic switch.
 
 This setup enables ⚙️ **zero-downtime deployments**, ♻️ **easy rollbacks**, and 📈 **high availability**. Once a new version of the application is fully tested in the Green environment, traffic is routed from Blue to Green through the ALB. In case of any failure, traffic can be quickly redirected back to the Blue environment, minimizing disruption.
 
@@ -43,31 +49,6 @@ Let's say your online store is running on Blue, version 1.0
 # Considerations:
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
-
-### 🛠️ Technologies Used
-
-- 🔮 **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
-
-- 🖥️ **AWS EC2** – Virtual servers running the web app in Blue and Green environments.
-
-- 📈 **AWS Auto Scaling Group (ASG)** – Dynamically scales instances based on demand.
-
-- 🌐 **AWS Application Load Balancer (ALB)** – Routes traffic and enables seamless switching between Blue and Green environments.
-
-- 🧾 **AWS Launch Template** – Defines instance configuration for Auto Scaling Groups.
-
-- 🚦 **Blue-Green Deployment Strategy** – For zero-downtime deployments and instant rollback.
-
-- 🌍 **Nginx** – Lightweight web server installed on each EC2 instance to serve app content.
-
-- 🗂️ **Amazon S3** – Object storage for static assets, configuration files, or logs related to the web application.
-
-- 🔒 **AWS Security Groups** – Control inbound/outbound traffic to EC2 and ALB.
-
-- 📊 **Amazon CloudWatch** *(optional)* – For monitoring metrics and scaling triggers.
-
-- 🧪 **Test/Staging Environment** – Used to validate Green environment before traffic switch.
-
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
