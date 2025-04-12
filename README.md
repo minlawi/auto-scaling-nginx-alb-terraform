@@ -33,19 +33,7 @@ Let's say your online store is running on Blue, version 1.0
 * Database changes need careful handling to be backward-compatible
 
 # 🛠️ Technologies Used
-
-**Terraform** - IaC tool to provision and manage AWS resources, including Blue and Green environments.
-**AWS Application Load Balancer (ALB)** - Distributes traffic across EC2 instances and enables traffic switching between environments.
-**Auto Scaling Group (ASG)** - Automatically scales EC2 instances based on demand.
-**Launch Template** - Defines EC2 instance settings for ASG deployments.
-**Amazon EC2** - Hosts the web application in both Blue and Green environments.
-**VPC** - Provides a secure, isolated network environment.
-**Public & Private Subnets** - Separate resources by access level and role.
-**Route Table & Internet Gateway** - Enable internet access for public-facing resources.
-**NAT Gateway & Elastic IP** - Allow secure internet access for private instances.
-**Bastion Host** - Provides SSH access to private EC2 instances.
-**Amazon S3** - Stores Terraform state files for centralized and versioned infrastructure management.
-**Bash Scripting (User Data)** - Automates EC2 configuration at instance startup.
+* 🧱 Terraform – IaC tool to provision and manage AWS resources, including Blue and Green environments.
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
