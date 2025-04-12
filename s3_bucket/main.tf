@@ -9,5 +9,5 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  profile = "master-programmatic-admin"
+  profile = var.profile
 }
