@@ -2,18 +2,30 @@
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/9f95b77985297c3e9e77602c896c895d2d9c9686/private-nginx-alb-workflow.drawio.png)
 
-# Project Overview
-* This mini-project demonstrates load balancing for a web server using an AWS Application Load Balancer (Internet-facing). 
-* It distributes traffic across multiple instances, with an Auto Scaling Group dynamically adjusting the number of instances based on demand to improve availability and scalability.
+### 📘 Project Overview
+This mini-project demonstrates the implementation of a 🚦 **Blue-Green Deployment strategy** on ☁️ **Amazon Web Services (AWS)** using 🔮 **Terraform** as the Infrastructure as Code (IaC) tool.
 
-# Deploy blue-green enviroment
-Blue-Green Deployment is a software release strategy that reduces downtime and risk by running two identical production environments—Blue and Green.
+The project provisions and manages the following key components:
 
-# How It Works:
-* The Blue environment is the current live version.
-* A new version is deployed to the Green environment.
-* Once tested and verified, traffic is switched from Blue to Green (usually via load balancer or DNS).
-* If something goes wrong, rollback is as simple as redirecting traffic back to Blue.
+* 🖥️ Two identical environments (Blue and Green) using Amazon EC2 instances running 🌍 Nginx web servers to simulate application behavior.
+
+* 🌐 An AWS Application Load Balancer (ALB) that distributes incoming traffic and enables seamless switching between environments for deployment purposes.
+
+* 📈 An AWS Auto Scaling Group (ASG) that dynamically scales the number of EC2 instances in each environment based on demand.
+
+* 🧾 AWS Launch Templates to standardize instance configuration such as AMI, instance type, and user data.
+
+* 🗂️ Amazon S3 for storing static assets, logs, or configuration files related to the web application.
+
+* 🔒 AWS Security Groups to manage network access for both EC2 instances and the ALB.
+
+* 📊 Optionally, Amazon CloudWatch is used to monitor system metrics and trigger scaling events.
+
+* 🧪 A Test/Staging environment is utilized to validate the Green deployment before directing live traffic.
+
+This setup enables ⚙️ **zero-downtime deployments**, ♻️ **easy rollbacks**, and 📈 **high availability**. Once a new version of the application is fully tested in the Green environment, traffic is routed from Blue to Green through the ALB. In case of any failure, traffic can be quickly redirected back to the Blue environment, minimizing disruption.
+
+This project showcases a practical and scalable deployment workflow, ideal for applications requiring continuous delivery and rapid recovery in production environments.
 
 # 🏢 Real-World Example (e.g., E-commerce website)
 Let's say your online store is running on Blue, version 1.0
@@ -35,15 +47,25 @@ Let's say your online store is running on Blue, version 1.0
 ### 🛠️ Technologies Used
 
 - 🔮 **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
+
 - 🖥️ **AWS EC2** – Virtual servers running the web app in Blue and Green environments.
+
 - 📈 **AWS Auto Scaling Group (ASG)** – Dynamically scales instances based on demand.
+
 - 🌐 **AWS Application Load Balancer (ALB)** – Routes traffic and enables seamless switching between Blue and Green environments.
+
 - 🧾 **AWS Launch Template** – Defines instance configuration for Auto Scaling Groups.
+
 - 🚦 **Blue-Green Deployment Strategy** – For zero-downtime deployments and instant rollback.
+
 - 🌍 **Nginx** – Lightweight web server installed on each EC2 instance to serve app content.
+
 - 🗂️ **Amazon S3** – Object storage for static assets, configuration files, or logs related to the web application.
+
 - 🔒 **AWS Security Groups** – Control inbound/outbound traffic to EC2 and ALB.
+
 - 📊 **Amazon CloudWatch** *(optional)* – For monitoring metrics and scaling triggers.
+
 - 🧪 **Test/Staging Environment** – Used to validate Green environment before traffic switch.
 
 
