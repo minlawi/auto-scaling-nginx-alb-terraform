@@ -65,8 +65,13 @@ terraform plan
 terraform apply -auto-approve</pre>
 
 # Verfication
+* terraform init
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-31-23.png)
+
+* terraform apply -auto-approve
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-34-39.png)
+
+* Verify the created S3 bucket in the AWS GUI
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-34-01.png)
 
 
