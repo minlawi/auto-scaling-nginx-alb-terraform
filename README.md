@@ -155,9 +155,9 @@ terrafrom apply -auto-approve</pre>
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green4.png)
 
 ### 🌍 Accessing the Green instances via ALB DNS
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green5.png)
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2bccac0d1532a6c737efcd6f8820b4a0c799b289/Screenshot%20from%202025-04-12%2014-31-49.png)
 
-![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green6.png)
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2bccac0d1532a6c737efcd6f8820b4a0c799b289/Screenshot%20from%202025-04-12%2014-31-54.png)
 
 ### 🗂️ Ensure terraform state file is stored in the S3 bucket
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4288b6377474823a8fc9255ca1dc2c97ebed3e9f/Screenshot%20from%202025-04-12%2014-29-30.png)
