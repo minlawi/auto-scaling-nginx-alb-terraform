@@ -33,7 +33,7 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-🛠️ Technologies Used
+**🛠️ Technologies Used** 
 
 * Terraform – Infrastructure as Code (IaC) tool to provision and manage all AWS resources declaratively. Also used for managing Blue and Green environments as separate, reproducible stacks.
 * AWS Application Load Balancer (ALB) – Internet-facing ALB used to distribute traffic across EC2 instances in both Blue and Green environments, enabling seamless traffic switching during deployments.
