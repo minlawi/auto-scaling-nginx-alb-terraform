@@ -52,4 +52,4 @@ Let's say your online store is running on Blue, version 1.0
 
 # Creating the resources step-by-step
 
-<pre> ```terraform.tfvars # Update the Profile profile="your_profile_name"```</pre>
+<pre> profile="your-profile-name" </pre>
