@@ -33,7 +33,8 @@ Let's say your online store is running on Blue, version 1.0
 * Database changes need careful handling to be backward-compatible
 
 # 🛠️ Technologies Used
-* 🧱 Terraform – IaC tool to provision and manage AWS resources, including Blue and Green environments.
+![Terraform](https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg)
+**Terraform** – Infrastructure as Code (IaC) tool to provision and manage AWS resources, including Blue and Green environments.
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
