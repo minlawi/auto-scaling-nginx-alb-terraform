@@ -108,3 +108,26 @@ proceed with building the blue environment.
 terraform validate
 terraform plan
 terrafrom apply -auto-approve</pre>
+
+# Verification Blue Environment
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue1.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue2.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue3.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue4.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue5.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue6.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/instances.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue7.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue8.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue9.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue10.png)
