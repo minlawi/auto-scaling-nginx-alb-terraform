@@ -51,15 +51,15 @@ Let's say your online store is running on Blue, version 1.0
 * Database changes need careful handling to be backward-compatible
 
 # Pre-requesities
-* **1** Create a **terraform.tfvars** file and add the following variables to it.
+* **1)** Create a **terraform.tfvars** file and add the following variables to it.
 <pre>profile        = "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
 
-* **2** Update your profile in the **s3_bucket** folder as well
+* **2)** Update your profile in the **s3_bucket** folder as well
 
-* **3** Once the profile is updated in the **s3_bucket** folder, proceed to create the S3 bucket to store the Terraform state file.
+* **3)** Once the profile is updated in the **s3_bucket** folder, proceed to create the S3 bucket to store the Terraform state file.
 <pre>cd s3_bucket/
 terraform init
 terraform validate
