@@ -110,6 +110,7 @@ terraform plan
 terrafrom apply -auto-approve</pre>
 
 # Verification Blue Environment
+* terraform init
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue1.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue2.png)
