@@ -50,7 +50,7 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-# Pre-requesities
+# Pre-requesities and Step-by-Step Guides
 * **1.** Clone this repo to your machine
 <pre>git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
 cd auto-scaling-nginx-alb-terraform/</pre>
@@ -162,3 +162,21 @@ terrafrom apply -auto-approve</pre>
 ### 🗂️ Ensure terraform state file is stored in the S3 bucket
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4288b6377474823a8fc9255ca1dc2c97ebed3e9f/Screenshot%20from%202025-04-12%2014-29-30.png)
 
+# Migrating terraform.state in S3 bucket to Local
+* **1.** Comment out **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
+<pre>terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.89.0"
+    }
+  }
+  # backend "s3" {
+  #   bucket       = "lawi-bucket"
+  #   key          = "terraform.tfstate"
+  #   region       = "ap-southeast-1"
+  #   encrypt      = true
+  #   profile      = "master-programmatic-admin"
+  #   use_lockfile = true // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
+  # }
+}</pre>
