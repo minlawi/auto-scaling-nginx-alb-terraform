@@ -76,12 +76,13 @@ terraform apply -auto-approve</pre>
 <pre>cd ..
 touch terraform.tfvars
 vi terraform.tfvars
+
 profile        = "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
 
-* **4.** Update the **backend** block in the providers.tf inside the **auto-scaling-nginx-alb-terraform** directory.
+* **4.** Update the **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
 <pre>terraform {
   required_providers {
     aws = {
@@ -98,3 +99,4 @@ create_bastion = ture </pre>
     use_lockfile = true // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
   }
 }</pre>
+
