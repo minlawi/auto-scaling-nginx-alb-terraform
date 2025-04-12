@@ -32,9 +32,9 @@ Let's say your online store is running on Blue, version 1.0
 * Requires duplicate infrastructure (can be costly)
 * Database changes need careful handling to be backward-compatible
 
-# 🛠️ Technologies Used
 ![Terraform Logo](https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg)
- – Infrastructure as Code (IaC) tool to provision and manage AWS resources, including Blue and Green environments.
+
+# 🛠️ Technologies Used
 
 # Creating the resources step-by-step
 # 1. Create the AWS S3 bucket
