@@ -41,7 +41,7 @@ Let's say your online store is running on Blue, version 1.0
 - 🧾 **AWS Launch Template** – Defines instance configuration for Auto Scaling Groups.
 - 🚦 **Blue-Green Deployment Strategy** – For zero-downtime deployments and instant rollback.
 - 🌍 **Nginx** – Lightweight web server installed on each EC2 instance to serve app content.
-- 🗂️ Amazon S3 – Object storage for static assets, configuration files, or logs related to the web application.
+- 🗂️ **Amazon S3** – Object storage for static assets, configuration files, or logs related to the web application.
 - 🔒 **AWS Security Groups** – Control inbound/outbound traffic to EC2 and ALB.
 - 📊 **Amazon CloudWatch** *(optional)* – For monitoring metrics and scaling triggers.
 - 🧪 **Test/Staging Environment** – Used to validate Green environment before traffic switch.
