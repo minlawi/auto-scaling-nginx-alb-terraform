@@ -34,7 +34,7 @@ Let's say your online store is running on Blue, version 1.0
 
 ### 🛠️ Technologies Used
 
-- <img src="https://www.vectorlogo.zone/logos/terraformio/terraformio-icon.svg" width="20"/> **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
+- 🔮 **Terraform** – Infrastructure as Code for provisioning and managing all AWS resources.
 - 🖥️ **AWS EC2** – Virtual servers running the web app in Blue and Green environments.
 - 📈 **AWS Auto Scaling Group (ASG)** – Dynamically scales instances based on demand.
 - 🌐 **AWS Application Load Balancer (ALB)** – Routes traffic and enables seamless switching between Blue and Green environments.
