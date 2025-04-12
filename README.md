@@ -137,7 +137,28 @@ terrafrom apply -auto-approve</pre>
 ### 🛠️ Target Groups for Green (Standby)
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue8.png)
 
-### 🌍 Access the Blue instances via ALB DNS
+### 🌍 Accessing the Blue instances via ALB DNS
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue9.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue10.png)
+
+# Verification Green Environment
+### 🛠️ terraform apply -auto-approve shift for active_environment as green. User picks green for blue-green deployment.
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green1.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green2.png)
+
+### 🛠️ Target Groups for Green (Active)
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green3.png)
+
+### 🛠️ Target Groups for Blue (Standby)
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green4.png)
+
+### 🌍 Accessing the Green instances via ALB DNS
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green5.png)
+
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4b86f5a8a8a7ccc926f89f16e6b4e726b456e8b2/green6.png)
+
+### 🗂️ Ensure terraform state file is stored in the S3 bucket
+![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4288b6377474823a8fc9255ca1dc2c97ebed3e9f/Screenshot%20from%202025-04-12%2014-29-30.png)
+
