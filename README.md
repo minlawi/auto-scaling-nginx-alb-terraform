@@ -58,4 +58,5 @@ cidr_block     = ["192.168.0.0/16"]
 create_bastion = ture </pre>
 
 * Create the S3 bucket
-<pre>cd s3_bucket</pre>
+<pre>cd s3_bucket/
+pwd</pre>
