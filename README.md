@@ -52,6 +52,8 @@ Let's say your online store is running on Blue, version 1.0
 
 # Creating the resources step-by-step
 
+<kbd>Copy</kbd>
+
 <pre>profile= "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
