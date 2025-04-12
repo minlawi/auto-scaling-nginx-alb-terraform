@@ -6,6 +6,32 @@
 * This mini-project demonstrates load balancing for a web server using an AWS Application Load Balancer (Internet-facing). 
 * It distributes traffic across multiple instances, with an Auto Scaling Group dynamically adjusting the number of instances based on demand to improve availability and scalability.
 
+# Deploy blue-green enviroment
+Blue-Green Deployment is a software release strategy that reduces downtime and risk by running two identical production environments—Blue and Green.
+
+# How It Works:
+* The Blue environment is the current live version.
+* A new version is deployed to the Green environment.
+* Once tested and verified, traffic is switched from Blue to Green (usually via load balancer or DNS).
+* If something goes wrong, rollback is as simple as redirecting traffic back to Blue.
+
+🏢 Real-World Example (e.g., E-commerce website)
+Let's say your online store is running on Blue, version 1.0
+* You develop version 1.1 with improved search
+* You deploy 1.1 to Green, fully test it using staging/test data.
+* Once confident, you switch live traffic to Green.
+* If anything breaks—like a payment bug—you flip back to Blue instantly.
+* Fix issues in Green, redeploy, and switch again.
+
+# Benefits:
+* Zero downtime deployments
+* Easy rollback
+* Environment parity (identical setups reduce "it works on my machine" issues)
+
+# Considerations:
+* Requires duplicate infrastructure (can be costly)
+* Database changes need careful handling to be backward-compatible
+
 # Technologies Used
  * Terraform for Infrastructure as Code (IaC)
  * AWS VPC, Subnets, Route Table, Internet Gateway, Public NAT Gateway, Elastic IP, Bastion (Jumphost), Auto Scaling Group, Launch Template and EC2.
