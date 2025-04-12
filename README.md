@@ -66,13 +66,13 @@ terraform plan
 terraform apply -auto-approve</pre>
 
 # Verfication S3 Bucket
-### Running terraform init will initialize the Terraform configuration and set up the S3 backend.
+### 🛠️ Running terraform init will initialize the Terraform configuration and set up the S3 backend.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-31-23.png)
 
-### Running terraform plan followed by terraform apply -auto-approve will generate and execute an execution plan, applying the proposed changes to the infrastructure without requiring manual approval.
+### 🛠️ Running terraform plan followed by terraform apply -auto-approve will generate and execute an execution plan, applying the proposed changes to the infrastructure without requiring manual approval.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-34-39.png)
 
-### Go to AWS Web UI and check the created S3 bucket
+### 🛠️ Go to AWS Web UI and check the created S3 bucket
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-34-01.png)
 
 * **3.** Create a **terraform.tfvars** file and define the required variables within it, inside the **auto-scaling-nginx-alb-terraform** directory.
@@ -112,32 +112,32 @@ terraform plan
 terrafrom apply -auto-approve</pre>
 
 # Verification Blue Environment
-### Running terraform init will initialize the Terraform configuration and set up the blue environment
+### 🛠️ terraform init will initialize the Terraform configuration and set up the blue environment.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue1.png)
 
-### Running terraform validate will check the configuration files for syntax errors and verify that they are syntactically valid and internally consistent.
+### 🛠️ terraform validate will check the configuration files for syntax errors and verify that they are syntactically valid and internally consistent.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue2.png)
 
-### terraform plan prompts for active_environment; user selects blue for blue-green deployment.
+### 🛠️ terraform plan prompts for active_environment; user selects blue for blue-green deployment.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue3.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue4.png)
 
-### terraform apply -auto-approve still prompts for active_environment. User picks blue for blue-green deployment.
+### 🛠️ terraform apply -auto-approve still prompts for active_environment. User picks blue for blue-green deployment.
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue5.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue6.png)
 
-### Instances
+### 🖥️ Instances
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/instances.png)
 
-### Target Groups for Blue (Active)
+### 🛠️ Target Groups for Blue (Active)
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue7.png)
 
-### Target Groups for Green (Standby)
+### 🛠️ Target Groups for Green (Standby)
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue8.png)
 
-### Access the Blue instances via ALB DNS
+### 🌍 Access the Blue instances via ALB DNS
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue9.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/a6c016b86abb054c9c757d61d312f21f4e850170/blue10.png)
