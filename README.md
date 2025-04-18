@@ -59,11 +59,13 @@ cd auto-scaling-nginx-alb-terraform/</pre>
 
 * **3.** After updating the profile and bucket name, proceed to create the S3 bucket, which will be used to store the Terraform state file.
 
-<pre>cd s3_bucket/
+```
+cd s3_bucket/
 terraform init
 terraform validate
 terraform plan
-terraform apply -auto-approve</pre>
+terraform apply -auto-approve
+```
 
 # Verfication S3 Bucket
 ### 🛠️ Running terraform init will initialize the Terraform configuration and set up the S3 backend.
@@ -76,17 +78,20 @@ terraform apply -auto-approve</pre>
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/66f032eab95df350de2cf7eeae5d2b4a97ef3b94/Screenshot%20from%202025-04-12%2012-34-01.png)
 
 * **3.** Create a **terraform.tfvars** file and define the required variables within it, inside the **auto-scaling-nginx-alb-terraform** directory.
-<pre>cd ..
+```
+cd ..
 touch terraform.tfvars
 vi terraform.tfvars
 
 profile        = "your-profile-name"
 create_vpc     = true
 cidr_block     = ["192.168.0.0/16"]
-create_bastion = ture </pre>
+create_bastion = ture
+```
 
 * **4.** Update the **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
-<pre>terraform {
+```
+terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -101,15 +106,17 @@ create_bastion = ture </pre>
     profile      = "your_profile"
     use_lockfile = true // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
   }
-}</pre>
+}
+```
 
 * **5.** After updating the profile name and backend block in the providers.tf file located in the auto-scaling-nginx-alb-terraform directory, 
 proceed with building the blue environment.
 
-<pre>terraform init
+```terraform init
 terraform validate
 terraform plan
-terrafrom apply -auto-approve</pre>
+terrafrom apply -auto-approve
+```
 
 # Verification Blue Environment
 ### 🛠️ terraform init will initialize the Terraform configuration and set up the blue environment.
@@ -163,7 +170,9 @@ terrafrom apply -auto-approve</pre>
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/4288b6377474823a8fc9255ca1dc2c97ebed3e9f/Screenshot%20from%202025-04-12%2014-29-30.png)
 
 # Destroy the whole infrastructure
-<pre>terraform destroy -auto-approve</pre>
+```
+terraform destroy -auto-approve
+```
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-48-49.png)
 
@@ -171,7 +180,7 @@ terrafrom apply -auto-approve</pre>
 
 # Migrating terraform.state in S3 bucket to Local and Delete the S3 bucket
 * **1.** Comment out **backend block** in the **providers.tf** file located within the **auto-scaling-nginx-alb-terraform** directory.
-<pre>terraform {
+```terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -186,20 +195,21 @@ terrafrom apply -auto-approve</pre>
   #   profile      = "master-programmatic-admin"
   #   use_lockfile = true // Terrafrom version 1.10 and above locks the state file to prevent concurrent modifications
   # }
-}</pre>
+}
+```
 
 
 * **2.** Run **terraform init -force-copy**
-<pre>terraform init -force-copy</pre>
+```
+terraform init -force-copy
+```
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/e4ed087a516c8ff7ee1858b11842c4d5ee8745b5/Screenshot%20from%202025-04-12%2014-46-00.png)
 
 * **3.** Destroy the S3 bucket
-<pre>cd s3_bucket/
-terraform destroy -auto-approve</pre>
-
 ```
-test
+cd s3_bucket/
+terraform destroy -auto-approve
 ```
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2e40cc5c8c7f2cb3b126c6d2842473562f54b0dd/Screenshot%20from%202025-04-12%2015-07-51.png)
