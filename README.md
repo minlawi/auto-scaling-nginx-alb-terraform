@@ -52,8 +52,10 @@ Let's say your online store is running on Blue, version 1.0
 
 # Pre-requesities and Step-by-Step Guides
 * **1.** Clone this repo to your machine
-<pre>git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
-cd auto-scaling-nginx-alb-terraform/</pre>
+```
+git clone https://github.com/minlawi/auto-scaling-nginx-alb-terraform.git
+cd auto-scaling-nginx-alb-terraform/
+```
 
 * **2.** Update the AWS profile in the **variables.tf** file and the bucket name in the **s3.tf** file located within the s3_bucket folder.
 
