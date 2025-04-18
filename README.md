@@ -198,6 +198,10 @@ terrafrom apply -auto-approve</pre>
 <pre>cd s3_bucket/
 terraform destroy -auto-approve</pre>
 
+```
+test
+```
+
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2e40cc5c8c7f2cb3b126c6d2842473562f54b0dd/Screenshot%20from%202025-04-12%2015-07-51.png)
 
 ![image alt](https://github.com/minlawi/auto-scaling-nginx-alb-terraform/blob/2e40cc5c8c7f2cb3b126c6d2842473562f54b0dd/Screenshot%20from%202025-04-12%2015-08-04.png)
